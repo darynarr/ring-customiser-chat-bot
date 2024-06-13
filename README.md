@@ -28,13 +28,3 @@ The chatbot should be integrated with a chat interface (i.e., Chainlit).
 You will be provided with the following documents:
 1. **Document on Ring Customization**
 2. **FAQ Document**
-
-## Chatbot Functional Requirements
-
-- **Order Collection**: Guide users through the process of customizing their ring, including selecting the style, size, surface, width, and engraving options.
-- **FAQ Response**: Answer user questions based on the provided FAQ document.
-- **Support Request Logging**: Identify and log support requests, capturing key details to assist the support team.
-
-## Integration
-
-- The chatbot should be integrated with a chat interface, such as Chainlit, to facilitate user interaction.
