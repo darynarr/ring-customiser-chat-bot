@@ -1,0 +1,1 @@
+from src.schemas.ring import Ring
