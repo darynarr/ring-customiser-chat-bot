@@ -25,4 +25,3 @@ From 1mm to 8mm
 
 #### Engraving
 Up to 20 characters or empty
-
