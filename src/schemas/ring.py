@@ -54,18 +54,6 @@ class Ring(BaseModel):
         Field(max_length=20, description="Engraving text, up to 20 characters or empty"),
     ] = None
 
-    class Config:
-        schema_extra = {
-            "example": {
-                "material": "Platinum",
-                "style": "Modern",
-                "surface": "Polished",
-                "size": 7.5,
-                "ring_width": 2.5,
-                "engraving": "Forever Yours",
-            }
-        }
-
     @field_validator("material", "style", "surface", mode="before")
     def capitalize_each_word(cls, value):
         if isinstance(value, str):
