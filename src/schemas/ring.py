@@ -1,23 +1,8 @@
 from typing import Annotated, Literal, Optional
 
 from pydantic import BaseModel, Field, field_validator
-from pydantic.dataclasses import dataclass
 
 
-class Config:
-    json_schema_extra = {
-        "example": {
-            "material": "Platinum",
-            "style": "Modern",
-            "surface": "Polished",
-            "size": 7.5,
-            "ring_width": 2.5,
-            "engraving": "Forever Yours",
-        }
-    }
-
-
-@dataclass(config=Config)
 class Ring(BaseModel):
     material: Annotated[
         Literal["Yellow Gold", "White Gold", "Platinum", "Sterling Silver", "Titanium"],
