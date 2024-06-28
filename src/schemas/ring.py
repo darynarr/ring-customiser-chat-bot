@@ -1,23 +1,46 @@
-from typing import Annotated, Literal, Optional
+from enum import Enum
+from typing import Annotated, Optional
 
-from pydantic import BaseModel, Field, field_validator
+from langchain.pydantic_v1 import BaseModel, Field
+
+
+class Material(str, Enum):
+    YELLOW_GOLD = "Yellow Gold"
+    WHITE_GOLD = "White Gold"
+    PLATINUM = "Platinum"
+    STERLING_SILVER = "Sterling Silver"
+    TITANIUM = "Titanium"
+
+
+class Style(str, Enum):
+    CLASSIC = "Classic"
+    MODERN = "Modern"
+    VINTAGE = "Vintage"
+    BOHEMIAN = "Bohemian"
+
+
+class Surface(str, Enum):
+    POLISHED = "Polished"
+    MATTE = "Matte"
+    HAMMERED = "Hammered"
+    BRUSHED = "Brushed"
 
 
 class Ring(BaseModel):
     material: Annotated[
-        Literal["Yellow Gold", "White Gold", "Platinum", "Sterling Silver", "Titanium"],
-        Field(description="Material of the ring"),
+        Optional[Material],
+        Field(description="Material of the ring."),
     ]
     style: Annotated[
-        Literal["Classic", "Modern", "Vintage", "Bohemian"],
-        Field(description="Style of the ring"),
+        Optional[Style],
+        Field(description="Style of the ring."),
     ]
     surface: Annotated[
-        Literal["Polished", "Matte", "Hammered", "Brushed"],
-        Field(description="Surface finish of the ring"),
+        Optional[Surface],
+        Field(description="Surface finish of the ring."),
     ]
     size: Annotated[
-        float,
+        Optional[float],
         Field(
             ge=4,
             le=13,
@@ -26,7 +49,7 @@ class Ring(BaseModel):
         ),
     ]
     ring_width: Annotated[
-        float,
+        Optional[float],
         Field(
             ge=1,
             le=8,
@@ -37,25 +60,4 @@ class Ring(BaseModel):
     engraving: Annotated[
         Optional[str],
         Field(max_length=20, description="Engraving text, up to 20 characters or empty"),
-    ] = None
-
-    @field_validator("material", "style", "surface", mode="before")
-    def capitalize_each_word(cls, value):
-        if isinstance(value, str):
-            return value.title()
-        return value
-
-    @field_validator("size", mode="before")
-    def parse_size(cls, value):
-        if isinstance(value, str) and value.isnumeric():
-            return float(value)
-        return value
-
-    @field_validator("ring_width", mode="before")
-    def parse_ring_width(cls, value):
-        if isinstance(value, str) and value.endswith("mm"):
-            value = value.replace(" ", "")[:-2]  # Remove the 'mm' part
-
-        if isinstance(value, str) and value.isnumeric():
-            return float(value)
-        return value
+    ]
