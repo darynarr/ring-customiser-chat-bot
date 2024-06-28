@@ -59,5 +59,8 @@ class Ring(BaseModel):
     ]
     engraving: Annotated[
         Optional[str],
-        Field(max_length=20, description="Engraving text, up to 20 characters or empty"),
+        Field(
+            max_length=20,
+            description="Engraving text, up to 20 characters or empty",
+        ),
     ]

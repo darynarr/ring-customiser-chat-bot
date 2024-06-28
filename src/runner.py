@@ -74,7 +74,8 @@ class Runner:
     def get_retrieval_chain(self):
         retrievers = {name: self.get_retriever(path) for name, path in self.docs.items()}
         context = {
-            f"context_{name}": RunnableLambda(itemgetter("input")) | retriever for name, retriever in retrievers.items()
+            f"context_{name}": RunnableLambda(itemgetter("input")) | retriever
+            for name, retriever in retrievers.items()
         }
         retrieval = RunnableParallel(
             {
@@ -86,7 +87,11 @@ class Runner:
         return retrieval
 
     @staticmethod
-    def get_retriever(filepath: Path, splitter_kwargs: Optional[Dict] = None, search_kwargs: Optional[Dict] = None):
+    def get_retriever(
+        filepath: Path,
+        splitter_kwargs: Optional[Dict] = None,
+        search_kwargs: Optional[Dict] = None,
+    ):
         # Set default params if None was given
         splitter_kwargs = splitter_kwargs or dict(chunk_size=200, chunk_overlap=0)
         search_kwargs = search_kwargs or {"k": 2}
@@ -104,10 +109,10 @@ class Runner:
 
     def get_router_chain(self):
         router_prompt_str = ROUTER_PROMPT.replace(
-            "{format_instructions}", EnumOutputParser(enum=Topic).get_format_instructions()
+            "{format_instructions}",
+            EnumOutputParser(enum=Topic).get_format_instructions(),
         )
         router_prompt = create_prompt(router_prompt_str, include_history=False)
-        router_parser = StrOutputParser()
 
         llm = ChatOpenAI(model=Config.MODEL, temperature=Config.TEMPERATURE)
 
@@ -115,7 +120,7 @@ class Runner:
             **{f"context_{name}": itemgetter(f"context_{name}") for name in self.docs.keys()},
             "input": itemgetter("input"),
             "history": itemgetter("history"),
-            "topic": router_prompt | llm | router_parser,
+            "topic": router_prompt | llm | StrOutputParser(),
         }
         return router_chain
 
@@ -138,7 +143,14 @@ class Runner:
         }
 
         branch_chain = RunnableBranch(
-            *[(lambda x: topic in x["topic"].lower(), branch) for topic, branch in branches.items()],
+            *[
+                (
+                    lambda x, topic=topic: topic in x["topic"].lower(),
+                    branches[topic],
+                )
+                for topic in branches
+            ],
             branches[Topic.FAQ],  # General chain
         )
+
         return branch_chain

@@ -4,7 +4,10 @@ from src import Runner
 
 DATA_DIR = Path("data")
 
-docs = {"customizations": DATA_DIR / "customization.md", "faq": DATA_DIR / "FAQ.md"}
+docs = {
+    "customizations": DATA_DIR / "customization.md",
+    "faq": DATA_DIR / "FAQ.md",
+}
 
 runner = Runner(docs)
 runner.setup()

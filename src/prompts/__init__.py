@@ -7,4 +7,11 @@ from src.prompts.prompts import (
 )
 from src.prompts.utils import create_prompt
 
-__all__ = ["ROUTER_PROMPT", "CUSTOMIZATION_PROMPT", "RING_PROMPT", "SUPPORT_PROMPT", "FAQ_PROMPT", "create_prompt"]
+__all__ = [
+    "ROUTER_PROMPT",
+    "CUSTOMIZATION_PROMPT",
+    "RING_PROMPT",
+    "SUPPORT_PROMPT",
+    "FAQ_PROMPT",
+    "create_prompt",
+]
