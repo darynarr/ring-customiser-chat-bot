@@ -1,3 +1,3 @@
-from src.runner import Runner
+from src.runner import Conversation
 
-__all__ = ["Runner"]
+__all__ = ["Conversation"]

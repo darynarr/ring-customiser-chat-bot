@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from src import Runner
+from src import Conversation
 
 DATA_DIR = Path("data")
 
@@ -9,7 +9,7 @@ docs = {
     "faq": DATA_DIR / "FAQ.md",
 }
 
-runner = Runner(docs)
+runner = Conversation(docs)
 runner.setup()
 
 if __name__ == "__main__":

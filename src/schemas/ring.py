@@ -27,6 +27,10 @@ class Surface(str, Enum):
 
 
 class Ring(BaseModel):
+    """
+    Ring schema.
+    """
+
     material: Annotated[
         Optional[Material],
         Field(description="Material of the ring."),
