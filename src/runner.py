@@ -5,9 +5,9 @@ from typing import Dict, Optional, Union
 
 from langchain.output_parsers import EnumOutputParser
 from langchain.schema.output_parser import StrOutputParser
-from langchain.vectorstores import DocArrayInMemorySearch
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_community.document_loaders import TextLoader
+from langchain_community.vectorstores import DocArrayInMemorySearch
 from langchain_core.runnables import RunnableBranch, RunnableLambda, RunnableParallel
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.vectorstores import VectorStoreRetriever
@@ -141,7 +141,7 @@ class Conversation:
             VectorStoreRetriever: Retriever for the document.
         """
         # Set default params if None was given
-        splitter_kwargs = splitter_kwargs or dict(chunk_size=200, chunk_overlap=0)
+        splitter_kwargs = splitter_kwargs or dict(chunk_size=1000, chunk_overlap=200)
         search_kwargs = search_kwargs or {"k": 2}
 
         loader = TextLoader(file_path=filepath, encoding="utf-8")
