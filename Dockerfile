@@ -8,6 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 8001
 
-CMD ["chainlit", "run", "main.py"]
+CMD ["chainlit", "run", "main.py", "--port", "8001"]

@@ -17,9 +17,9 @@ from langchain_text_splitters import CharacterTextSplitter
 from src.prompts import (
     CUSTOMIZATION_PROMPT,
     FAQ_PROMPT,
+    REQUEST_PROMPT,
     RING_PROMPT,
     ROUTER_PROMPT,
-    SUPPORT_PROMPT,
     create_prompt,
 )
 from src.schemas import Ring, SupportRequest, Topic
@@ -33,7 +33,7 @@ class Config:
 PROMPTS_BY_TOPIC = {
     Topic.CUSTOMIZATION: CUSTOMIZATION_PROMPT,
     Topic.RING: RING_PROMPT,
-    Topic.REQUEST: SUPPORT_PROMPT,
+    Topic.REQUEST: REQUEST_PROMPT,
     Topic.FAQ: FAQ_PROMPT,
 }
 
@@ -194,7 +194,7 @@ class Conversation:
             Topic.CUSTOMIZATION: create_prompt(CUSTOMIZATION_PROMPT) | llm | StrOutputParser(),
             Topic.RING: create_prompt(RING_PROMPT) | llm.with_structured_output(schema=Ring),
             Topic.REQUEST: (
-                create_prompt(SUPPORT_PROMPT) | llm.with_structured_output(schema=SupportRequest)
+                create_prompt(REQUEST_PROMPT) | llm.with_structured_output(schema=SupportRequest)
             ),
             Topic.FAQ: create_prompt(FAQ_PROMPT) | llm | StrOutputParser(),
         }

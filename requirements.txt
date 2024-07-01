@@ -7,3 +7,4 @@ docx2txt
 docarray
 chainlit
 pydantic
+pandas
