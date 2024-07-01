@@ -165,3 +165,4 @@ chainlit.md
 .vscode/
 .chainlit/
 .ruff_cache/
+output/
