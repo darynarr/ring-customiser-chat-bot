@@ -1,27 +1,29 @@
 **Q**: What sizes are available?
-**A:** We offer American sizes from 4 to 13, including half sizes. Here’s a table mapping American sizes to millimeters:
-| American Size | Diameter (mm) |
-|---------------|---------------|
-| 4             | 14.9          |
-| 4.5           | 15.3          |
-| 5             | 15.7          |
-| 5.5           | 16.1          |
-| 6             | 16.5          |
-| 6.5           | 16.9          |
-| 7             | 17.3          |
-| 7.5           | 17.7          |
-| 8             | 18.1          |
-| 8.5           | 18.5          |
-| 9             | 18.9          |
-| 9.5           | 19.3          |
-| 10            | 19.7          |
-| 10.5          | 20.1          |
-| 11            | 20.5          |
-| 11.5          | 20.9          |
-| 12            | 21.3          |
-| 12.5          | 21.7          |
-| 13            | 22.1          |
+**A:** We offer American sizes from 4 to 13, including half sizes.
 
+**Q**: How to determine my size of the ring based on measurements?
+**A:** Measure the circumference of your finger or the inner diameter of an existing ring and use the table below to find the corresponding size:
+| American Size | Diameter (mm) | Circumference (mm) | Diameter (inches) | Circumference (inches) |
+|---------------|---------------|--------------------|-------------------|-----------------------|
+| 4             | 14.9          | 46.81              | 0.587             | 1.843                 |
+| 4.5           | 15.3          | 48.07              | 0.602             | 1.893                 |
+| 5             | 15.7          | 49.32              | 0.618             | 1.942                 |
+| 5.5           | 16.1          | 50.58              | 0.634             | 1.991                 |
+| 6             | 16.5          | 51.84              | 0.650             | 2.041                 |
+| 6.5           | 16.9          | 53.09              | 0.665             | 2.090                 |
+| 7             | 17.3          | 54.35              | 0.681             | 2.140                 |
+| 7.5           | 17.7          | 55.61              | 0.697             | 2.189                 |
+| 8             | 18.1          | 56.86              | 0.713             | 2.239                 |
+| 8.5           | 18.5          | 58.12              | 0.728             | 2.288                 |
+| 9             | 18.9          | 59.38              | 0.744             | 2.338                 |
+| 9.5           | 19.3          | 60.63              | 0.760             | 2.387                 |
+| 10            | 19.7          | 61.89              | 0.776             | 2.437                 |
+| 10.5          | 20.1          | 63.15              | 0.791             | 2.486                 |
+| 11            | 20.5          | 64.40              | 0.807             | 2.535                 |
+| 11.5          | 20.9          | 65.66              | 0.823             | 2.585                 |
+| 12            | 21.3          | 66.92              | 0.839             | 2.635                 |
+| 12.5          | 21.7          | 68.17              | 0.854             | 2.684                 |
+| 13            | 22.1          | 69.43              | 0.870             | 2.733                 |
 
 **Q:** Can I add an engraving to my ring?
 **A:** Yes, you can add an engraving of up to 20 characters.

@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import chainlit as cl
+
 from src import Conversation
 
 DATA_DIR = Path("data")
@@ -12,8 +14,8 @@ docs = {
 runner = Conversation(docs)
 runner.setup()
 
-if __name__ == "__main__":
-    while True:
-        human_message = input("Human: ")
-        ai_response = runner(human_message)
-        print("AI: ", ai_response)
+
+@cl.on_message
+async def main(message: cl.Message):
+    ai_response = runner(message.content)
+    await cl.Message(content=ai_response).send()
