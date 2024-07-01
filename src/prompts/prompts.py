@@ -2,12 +2,13 @@ ROUTER_PROMPT = """
 Given the input and the conversation history classify:
 
 - If the user would like to customize or order a ring ("I would like to order a ring", "I would like to customize a ring" etc.), or being in the process of customizing giving to you a selected options from the customization context classify as "customization".
-- If correctness of the customizations is being confirmed (message "Correct") classify as "ring".
-- If the user expresses frustration, issues, or needs help beyond FAQ answers (e.g., "I can't find my order," "I need help with my account") or would like to make a direct request or to reach out for a support team OR you just received message "Confirm" classify as "request".
+- If message "Correct" or similar classify as "ring".
+- If the user expresses frustration, issues, or needs help beyond FAQ answers (e.g., "I can't find my order," "I need help with my account") or would like to make a direct request or to reach out for a support team OR you just received message "Confirm" or similar classify as "request".
 - If the user asks questions covered in the FAQ classify as "faq".
 
 Notice:
 Do not answer the question or make up the answer or question, only return as simple as possible, eithter 'customization', 'ring', 'request' or 'faq' as string without any instruction text, reasoning text, headlines, leading-text or other additional information.
+Do NOT classify ring order messages as 'ring', it is 'customization'.
 
 Customizations Context:
 {context_customizations}

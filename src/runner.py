@@ -8,7 +8,6 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain.vectorstores import DocArrayInMemorySearch
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_community.document_loaders import TextLoader
-from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.runnables import RunnableBranch, RunnableLambda, RunnableParallel
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.vectorstores import VectorStoreRetriever
@@ -193,15 +192,9 @@ class Conversation:
 
         branches = {
             Topic.CUSTOMIZATION: create_prompt(CUSTOMIZATION_PROMPT) | llm | StrOutputParser(),
-            Topic.RING: (
-                create_prompt(RING_PROMPT)
-                | llm.bind(response_format={"type": "json_object"})
-                | JsonOutputParser(pydantic_object=Ring)
-            ),
+            Topic.RING: create_prompt(RING_PROMPT) | llm.with_structured_output(schema=Ring),
             Topic.REQUEST: (
-                create_prompt(SUPPORT_PROMPT)
-                | llm.bind(response_format={"type": "json_object"})
-                | JsonOutputParser(pydantic_object=SupportRequest)
+                create_prompt(SUPPORT_PROMPT) | llm.with_structured_output(schema=SupportRequest)
             ),
             Topic.FAQ: create_prompt(FAQ_PROMPT) | llm | StrOutputParser(),
         }
