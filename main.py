@@ -7,6 +7,7 @@ from src.messages import (
     RING_CONFIRMATION_TEMPLATE,
     SUPPORT_REQUEST_CONFIRMATION_TEMPLATE,
     WELCOME_MESSAGE,
+    pydantic_to_text,
 )
 from src.schemas import Ring, SupportRequest
 
@@ -31,9 +32,9 @@ async def on_chat_start():
 async def main(message: cl.Message):
     ai_response = runner(message.content)
     if isinstance(ai_response, Ring):
-        ai_response = RING_CONFIRMATION_TEMPLATE.format(ring=ai_response.json(indent=4))
+        ai_response = RING_CONFIRMATION_TEMPLATE.format(ring=pydantic_to_text(ai_response))
     elif isinstance(ai_response, SupportRequest):
         ai_response = SUPPORT_REQUEST_CONFIRMATION_TEMPLATE.format(
-            request=ai_response.json(indent=4)
+            ring=pydantic_to_text(ai_response)
         )
     await cl.Message(content=ai_response).send()
