@@ -28,3 +28,18 @@ The chatbot should be integrated with a chat interface (i.e., Chainlit).
 You will be provided with the following documents:
 1. **Document on Ring Customization**
 2. **FAQ Document**
+
+## How to run
+With docker:
+```
+docker build -t ring-customizer .
+docker run -p 8000:8000 ring-customizer
+```
+OR
+With conda:
+```
+conda create --name ring-customizer python=3.11
+conda activate ring-customizer
+pip install -r requirements.txt
+chainlit run main.py
+```
