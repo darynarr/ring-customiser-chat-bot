@@ -30,10 +30,11 @@ You will be provided with the following documents:
 2. **FAQ Document**
 
 ## How to run
+
 With docker:
 ```
 docker build -t ring-customizer .
-docker run -p 8001:8001 -v $(pwd)/output:/app/output ring-customizer
+docker run -p 8001:8001 -v $(pwd)/output:/app/output ring-customizer -e OPENAI_API_KEY='' -e OPENAI_ORGANIZATION=''
 ```
 OR
 With conda:
@@ -41,5 +42,7 @@ With conda:
 conda create --name ring-customizer python=3.11
 conda activate ring-customizer
 pip install -r requirements.txt
+export OPENAI_API_KEY=<your api key>
+export OPENAI_ORGANIZATION=<your organization>
 chainlit run main.py
 ```
