@@ -34,7 +34,7 @@ You will be provided with the following documents:
 With docker:
 ```
 docker build -t ring-customizer .
-docker run -p 8001:8001 -v $(pwd)/output:/app/output ring-customizer -e OPENAI_API_KEY='' -e OPENAI_ORGANIZATION=''
+docker run -p 8001:8001 -v $(pwd)/output:/app/output -e OPENAI_API_KEY='' -e OPENAI_ORGANIZATION='' ring-customizer
 ```
 OR
 With conda:
