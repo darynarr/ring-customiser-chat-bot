@@ -30,19 +30,22 @@ You will be provided with the following documents:
 2. **FAQ Document**
 
 ## How to run
+Create a `.env` file in your repository directory with the following content:
+```
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_ORGANIZATION=your_openai_organization
+```
+Replace `your_openai_api_key` and `your_openai_organization` with your actual OpenAI credentials.
 
-With docker:
+Then run with docker:
 ```
 docker build -t ring-customizer .
-docker run -p 8001:8001 -v $(pwd)/output:/app/output -e OPENAI_API_KEY='' -e OPENAI_ORGANIZATION='' ring-customizer
+docker run -p 8001:8001 -v $(pwd)/output:/app/output ring-customizer
 ```
-OR
-With conda:
+or with conda:
 ```
 conda create --name ring-customizer python=3.11
 conda activate ring-customizer
 pip install -r requirements.txt
-export OPENAI_API_KEY=<your api key>
-export OPENAI_ORGANIZATION=<your organization>
 chainlit run main.py
 ```
